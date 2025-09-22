@@ -2,6 +2,9 @@
   "name": "asd",
   "version": "1.0.2",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "license": "MIT",
   "scripts": {
     "start": "tsnd --respawn -r tsconfig-paths/register  --transpile-only  ./src/index.ts",
