@@ -1,0 +1,13 @@
+
+[phases.setup]
+nixPkgs = ["nodejs-20_x"]
+
+[phases.install]
+cmds = ["yarn install --frozen-lockfile"]
+
+[phases.build]
+# se non hai build step puoi anche rimuovere questa fase
+cmds = ["yarn build"]
+
+[start]
+cmd = "node dist/index.js"
