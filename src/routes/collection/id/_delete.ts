@@ -1,9 +1,10 @@
 import { getCollection } from "@src/api/getCollection";
 import { removeFromCollection } from "@src/api/removeFromCollection";
+import { authenticated } from "@src/features/authenticated";
 import express from "express";
 
 export default (app: express.Express) => {
-  app.delete("/:user/collection/:id", async (req, res) => {
+  app.delete("/:user/collection/:id", authenticated, async (req, res) => {
     const { user, id } = req.params;
     if (!user || !id) {
       return res.status(400).send("Missing user or id");

@@ -9,17 +9,12 @@ const removeFromCollection = async ({
   username: string;
   password: string;
 }) => {
-  await axios.post(
+  const response = await axios.post(
     "https://rpggeek.com/geekcollection.php",
     new URLSearchParams({
-      objecttype: "thing",
-      objectid: id.toString(),
-      addowned: "true",
-      addwish: "false",
-      wishlistpriority: "1",
-      force: "true",
+      collid: id.toString(),
       ajax: "1",
-      action: "additem",
+      action: "delete",
     }),
     {
       headers: {
@@ -43,6 +38,7 @@ const removeFromCollection = async ({
       },
     }
   );
+  console.log(response.data);
 };
 
 export { removeFromCollection };
