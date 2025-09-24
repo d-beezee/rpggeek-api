@@ -1,5 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
+import he from "he";
 
 const getCollection = async ({
   user,
@@ -53,7 +54,7 @@ const getCollection = async ({
         const links = nameData.find("a");
         const names = Array.from(
           links.map((_, link) => {
-            return $(link).html();
+            return he.decode($(link).html() || "");
           })
         );
         const nameObject = {
