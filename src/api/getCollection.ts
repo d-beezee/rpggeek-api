@@ -45,6 +45,7 @@ const getCollection = async ({
       })
       .map((_, row) => {
         const rating = $(row).find(".collection_rating.editfield");
+        const ratingValue = rating.find(".ratingtext").html();
         const command = rating.attr("onclick")?.replace("CE_EditData", "");
         const item = eval(command || "");
 
@@ -61,6 +62,7 @@ const getCollection = async ({
           id: objectId,
           collectionId: collectionId,
           main: names[0],
+          ...(ratingValue ? { rating: parseFloat(ratingValue) } : {}),
           ...(names.length > 1 ? { game: names[1] } : {}),
           ...(names.length > 2 ? { genre: names[2] } : {}),
         };
